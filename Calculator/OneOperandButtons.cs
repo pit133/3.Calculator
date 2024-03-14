@@ -74,5 +74,32 @@ namespace Calculator.ViewModels
             }
         }
 
+        public void CountSin()
+        {
+            double SinOfnumber = Convert.ToDouble(_currentOperand);
+            SinOfnumber = Math.Sin(SinOfnumber);
+            _isOperationPending = true;
+            _currentOperand = Convert.ToString(SinOfnumber);
+            Result = Convert.ToString(SinOfnumber);
+        }
+
+        public void CountCos()
+        {
+            double CosOfnumber = Convert.ToDouble(_currentOperand);
+            CosOfnumber = Math.Cos(CosOfnumber);
+            _isOperationPending = true;
+            _currentOperand = Convert.ToString(CosOfnumber);
+            Result = Convert.ToString(CosOfnumber);
+        }
+
+        public void CountTan()
+        {
+            double TanOfnumber = Convert.ToDouble(_currentOperand);
+            TanOfnumber = Math.Tan(TanOfnumber);
+            _isOperationPending = true;
+            _currentOperand = Convert.ToString(TanOfnumber);
+            Result = Convert.ToString(TanOfnumber);
+        }
+
     }
 }
