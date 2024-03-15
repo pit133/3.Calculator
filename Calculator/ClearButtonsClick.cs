@@ -12,13 +12,22 @@ namespace Calculator.ViewModels
         public void Clear()
         {
             _currentOperand = string.Empty;
+            _exOperand = string.Empty;
             Result = "0";
         }
 
         public void BackSpace()
         {
-            _currentOperand = _currentOperand.Substring(0, _currentOperand.Length - 1);
-            Result = Result.Substring(0, Result.Length - 1);
+            if (_currentOperand.Length == 1) 
+            {
+                _currentOperand = "0";
+                Result = "0";
+            }
+            else if (_currentOperand != string.Empty)
+            {
+                _currentOperand = _currentOperand.Substring(0, _currentOperand.Length - 1);
+                Result = Result.Substring(0, Result.Length - 1);
+            }
         }
     }
 }

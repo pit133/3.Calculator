@@ -18,8 +18,17 @@ namespace Calculator.ViewModels
                     _isOperationPending = false;
                 }
 
-                _currentOperand += parameter;
+                if (_currentOperand == "0")
+                {
+                    _currentOperand = parameter;
+                }
+                else
+                {
+                    _currentOperand += parameter;                    
+                }
+
                 Result = _currentOperand;
+
             }
         }
     }

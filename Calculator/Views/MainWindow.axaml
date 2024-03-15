@@ -43,6 +43,7 @@
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0"
 							 Grid.Column="0"
 							 Grid.ColumnSpan="6">
+      
         <TextBlock Name ="Input"
                Text="{Binding Result}"
                FontSize="30"
@@ -87,6 +88,8 @@
             Classes="button"
             Grid.Row="5"
             Grid.Column="0"
+            Command="{Binding DetectOperation}"
+            CommandParameter="x^y"
             />
     
     <Button x:Name="buttonClear"
@@ -103,9 +106,22 @@
             Grid.Column="2"
             Command="{Binding BackSpace}"/>
     
-    <Button x:Name="buttonMod" Content="Mod" Classes="button" Grid.Row="1" Grid.Column="3"/>
+    <Button x:Name="buttonMod"
+            Content="Mod"
+            Classes="button"
+            Grid.Row="1"
+            Grid.Column="3"
+            Command="{Binding DetectOperation}"
+            CommandParameter="Mod"
+            />
     
-    <Button x:Name="buttonDevide" Content="/" Classes="button" Grid.Row="1" Grid.Column="4"/>
+    <Button x:Name="buttonDevide"
+            Content="/"
+            Classes="button"
+            Grid.Row="1"
+            Grid.Column="4"          
+            Command="{Binding DetectOperation}"
+            CommandParameter="/"/>
     
     <Button x:Name="buttonLg"
             Content="lg"
@@ -138,7 +154,13 @@
 						Command="{Binding NumberButtonCommand}"
 						CommandParameter="9"/>
     
-    <Button x:Name="buttonMull" Content="*" Classes="button" Grid.Row="2" Grid.Column="4"/>
+    <Button x:Name="buttonMull"
+            Content="*"
+            Classes="button"
+            Grid.Row="2"
+            Grid.Column="4"            
+            Command="{Binding DetectOperation}"
+            CommandParameter="*"/>
     
     <Button x:Name="buttonLn"
             Content="ln"
@@ -171,7 +193,13 @@
 				    Command="{Binding NumberButtonCommand}"
 				    CommandParameter="6"/>
     
-    <Button x:Name="buttonMinus" Content="-" Classes="button" Grid.Row="3" Grid.Column="4"/>
+    <Button x:Name="buttonMinus"
+            Content="-"
+            Classes="button"
+            Grid.Row="3"
+            Grid.Column="4"            
+            Command="{Binding DetectOperation}"
+            CommandParameter="-"/>
     
     <Button x:Name="buttonFloor"
             Content="floor"
@@ -180,12 +208,22 @@
             Grid.Column="5"
             Command="{Binding Floor}"/>
 
-    <Button x:Name="buttonOne" Content="1" Classes="button" Grid.Row="4" Grid.Column="1"
-				Command="{Binding NumberButtonCommand}"
-				CommandParameter="1"/>
-    <Button x:Name="buttonTwo" Content="2" Classes="button" Grid.Row="4" Grid.Column="2"
-				Command="{Binding NumberButtonCommand}"
-				CommandParameter="2"/>
+    <Button x:Name="buttonOne"
+            Content="1"
+            Classes="button"
+            Grid.Row="4"
+            Grid.Column="1"
+				    Command="{Binding NumberButtonCommand}"
+				    CommandParameter="1"/>
+    
+    <Button x:Name="buttonTwo"
+            Content="2"
+            Classes="button"
+            Grid.Row="4"
+            Grid.Column="2"
+				    Command="{Binding NumberButtonCommand}"
+				    CommandParameter="2"/>
+    
     <Button x:Name="buttonThree" Content="3" Classes="button" Grid.Row="4" Grid.Column="3"
 				Command="{Binding NumberButtonCommand}"
 				CommandParameter="3"/>
@@ -195,7 +233,8 @@
             Classes="button"
             Grid.Row="4"
             Grid.Column="4"
-            Command="{Binding Add}"
+            Command="{Binding DetectOperation}"
+            CommandParameter="+"
             />
     
     <Button x:Name="buttonCeil"
@@ -228,7 +267,12 @@
             Command="{Binding AddPoint}"
             />
     
-    <Button x:Name="buttonEqual" Content="=" Classes="button" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"/>
+    <Button x:Name="buttonEqual"
+            Content="="
+            Classes="button"
+            Grid.Row="5"
+            Grid.Column="4"
+            Grid.ColumnSpan="2"/>
   </Grid>
 
 </Window>
