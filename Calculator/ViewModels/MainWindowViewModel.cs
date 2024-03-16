@@ -17,6 +17,7 @@ namespace Calculator.ViewModels
         private string _currentOperand = string.Empty;
         private string _exOperand = string.Empty;
         private string _lastOperation = string.Empty;
+        private string _lastOperand = string.Empty;
         private bool _isOperationPending = false;
 
 

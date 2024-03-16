@@ -15,16 +15,19 @@ namespace Calculator.ViewModels
                 if (_isOperationPending)
                 {
                     _currentOperand = string.Empty;
+                    _lastOperand = string.Empty;
                     _isOperationPending = false;
                 }
 
                 if (_currentOperand == "0")
                 {
                     _currentOperand = parameter;
+                    _lastOperand = parameter;
                 }
                 else
                 {
-                    _currentOperand += parameter;                    
+                    _currentOperand += parameter;
+                    _lastOperand += parameter;
                 }
 
                 Result = _currentOperand;
