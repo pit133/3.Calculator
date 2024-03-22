@@ -14,6 +14,17 @@ namespace Calculator.ViewModels
         public void DetectOperation(string operation)
         {
             _isOperationPending = true;
+            double resultOfOperation;
+
+            List<string> oneOperandOperations = new List<string> 
+            {
+                "lg",
+                "ln",
+                "sin",
+                "cos",
+                "tan",
+                "!n",
+            };
 
             if (_exOperand != string.Empty)
             {
@@ -53,12 +64,79 @@ namespace Calculator.ViewModels
                     break;
 
                 case "=":
-                    _exOperand = _currentOperand;
-                    _currentOperand = _lastOperand;
+                    if (oneOperandOperations.Contains(_lastOperation))
+                    {
+                        Calculate();
+                    }
+                    else
+                    {
+                        _exOperand = _currentOperand;
+                        _currentOperand = _lastOperand;
+                    }
                     break;
 
-                case "lg":                    
-                    _lastOperation = "lg";
+                case "lg":
+                    _lastOperation = "lg";                    
+                    Calculate();
+                    break;
+
+                case "!n":
+                    _lastOperation = "!n";
+                    Calculate();
+                    break;
+
+                case "ln":
+                    _lastOperation = "ln";
+                    Calculate();
+                    break;
+
+                case "floor":
+                    _lastOperation = "floor";
+                    resultOfOperation = Math.Floor(Convert.ToDouble(_currentOperand));
+                    _currentOperand = Convert.ToString(resultOfOperation);
+                    Result = _currentOperand;                  
+                    break;
+
+                case "ceil":
+                    _lastOperation = "ceil";
+                    resultOfOperation = Math.Ceiling(Convert.ToDouble(_currentOperand));
+                    _currentOperand = Convert.ToString(resultOfOperation);
+                    Result = _currentOperand;
+                    break;
+
+                case ",":
+                    _lastOperation = ",";
+                    Calculate();
+                    break;
+
+                case "+/-":
+                    if (_currentOperand != string.Empty)
+                    {
+                        if (_currentOperand[0] == '-')
+                        {
+                            _currentOperand = _currentOperand.Substring(1, _currentOperand.Length - 1);
+                        }
+                        else
+                        {
+                            _currentOperand = "-" + _currentOperand;
+                        }
+
+                        Result = _currentOperand;
+                    }
+                    break;
+
+                case "sin":
+                    _lastOperation = "sin";
+                    Calculate();
+                    break;
+
+                case "cos":
+                    _lastOperation = "cos";
+                    Calculate();
+                    break;
+
+                case "tan":
+                    _lastOperation = "tan";
                     Calculate();
                     break;
             }
@@ -76,24 +154,21 @@ namespace Calculator.ViewModels
                     resultOfOperation = Convert.ToDouble(_exOperand) + Convert.ToDouble(_currentOperand);
                     _currentOperand = Convert.ToString(resultOfOperation);
                     _exOperand = string.Empty;
-                    Result = _currentOperand;
-                    //DetectOperation("+");
+                    Result = _currentOperand;                    
                     break;
 
                 case "-":
                     resultOfOperation = Convert.ToDouble(_exOperand) - Convert.ToDouble(_currentOperand);
                     _currentOperand = Convert.ToString(resultOfOperation);
                     _exOperand = string.Empty;
-                    Result = _currentOperand;
-                    //DetectOperation("-");
+                    Result = _currentOperand;                   
                     break;
 
                 case "*":
                     resultOfOperation = Convert.ToDouble(_exOperand) * Convert.ToDouble(_currentOperand);
                     _currentOperand = Convert.ToString(resultOfOperation);
                     _exOperand = string.Empty;
-                    Result = _currentOperand;
-                    //DetectOperation("*");
+                    Result = _currentOperand;                    
                     break;
 
                 case "/":
@@ -102,8 +177,7 @@ namespace Calculator.ViewModels
                         resultOfOperation = Convert.ToDouble(_exOperand) / Convert.ToDouble(_currentOperand);
                         _currentOperand = Convert.ToString(resultOfOperation);
                         _exOperand = string.Empty;
-                        Result = _currentOperand;
-                        //DetectOperation("/");
+                        Result = _currentOperand;                        
                     }
                     else
                         Result = "Деление на ноль невозможно";
@@ -124,13 +198,56 @@ namespace Calculator.ViewModels
                     break;
 
                 case "lg":
-                    resultOfOperation = Math.Log10(Convert.ToDouble(_currentOperand));
-                    //_isOperationPending = true;
-                    _currentOperand = Convert.ToString(resultOfOperation);
-                    //_exOperand = string.Empty;
+                    resultOfOperation = Math.Log10(Convert.ToDouble(_currentOperand));                    
+                    _currentOperand = Convert.ToString(resultOfOperation);                    
                     Result = _currentOperand;
                     break;
 
+                case "!n":
+                    int CeiledCurrentOperand = Math.Abs(Convert.ToInt32(Convert.ToDouble(_currentOperand)));
+                    int result = 1;
+
+                    for (int i = 1; i <= CeiledCurrentOperand; i++)
+                    {
+                        result *= i;
+                    }
+                    _currentOperand = Convert.ToString(result);
+                    Result = _currentOperand;
+                    break;
+
+                case "ln":
+                    resultOfOperation = Math.Log(Convert.ToDouble(_currentOperand));                    
+                    _currentOperand = Convert.ToString(resultOfOperation);                    
+                    Result = _currentOperand;
+                    break;                                                                    
+                
+
+                case "sin":
+                    resultOfOperation = Math.Sin(Convert.ToDouble(_currentOperand));
+                    _currentOperand = Convert.ToString(resultOfOperation);
+                    Result = _currentOperand;
+                    break;
+
+                case "cos":
+                    resultOfOperation = Math.Cos(Convert.ToDouble(_currentOperand));
+                    _currentOperand = Convert.ToString(resultOfOperation);
+                    Result = _currentOperand;
+                    break;
+
+                case "tan":
+                    resultOfOperation = Math.Tan(Convert.ToDouble(_currentOperand));
+                    _currentOperand = Convert.ToString(resultOfOperation);
+                    Result = _currentOperand;
+                    break;
+
+                case ",":
+                    if (!_currentOperand.Contains(","))
+                    {
+                        _isOperationPending = false;
+                        _currentOperand += ",";
+                        Result = _currentOperand;
+                    }
+                    break;
 
             }
         }

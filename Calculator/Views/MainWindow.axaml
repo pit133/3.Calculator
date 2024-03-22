@@ -57,7 +57,8 @@
             Classes="button"
             Grid.Row="1"
             Grid.Column="0"
-            Command="{Binding CountSin}"
+            Command="{Binding DetectOperation}"
+            CommandParameter="sin"
             />
 
     <Button x:Name="buttonCos"
@@ -65,7 +66,8 @@
             Classes="button"
             Grid.Row="2"
             Grid.Column="0"
-            Command="{Binding CountCos}"
+            Command="{Binding DetectOperation}"
+            CommandParameter="cos"
             />
     
     <Button x:Name="buttonTan"
@@ -73,14 +75,17 @@
             Classes="button"
             Grid.Row="3"
             Grid.Column="0"
-            Command="{Binding CountTan}"
+            Command="{Binding DetectOperation}"
+            CommandParameter="tan"
             />
     
     <Button x:Name="buttonFactorial"
             Content="!n"
             Classes="button"
             Grid.Row="4"
-            Grid.Column="0"            
+            Grid.Column="0"
+            Command="{Binding DetectOperation}"
+            CommandParameter="!n"
             />
 
     <Button x:Name="buttonPow"
@@ -168,7 +173,8 @@
             Classes="button"
             Grid.Row="2"
             Grid.Column="5"
-            Command="{Binding CountLn}"/>
+            Command="{Binding DetectOperation}"
+            CommandParameter="ln"/>
 
     <Button x:Name="buttonFour"
             Content="4"
@@ -207,7 +213,8 @@
             Classes="button"
             Grid.Row="3"
             Grid.Column="5"
-            Command="{Binding Floor}"/>
+            Command="{Binding DetectOperation}"
+            CommandParameter="floor"/>
 
     <Button x:Name="buttonOne"
             Content="1"
@@ -247,14 +254,16 @@
             Classes="button"
             Grid.Row="4"
             Grid.Column="5"
-            Command="{Binding Ceil}"/>
+            Command="{Binding DetectOperation}"
+            CommandParameter="ceil"/>
 
     <Button x:Name="buttonPlusMinus"
             Content="+/-"
             Classes="button"
             Grid.Row="5"
             Grid.Column="1"
-            Command="{Binding ChangeSign}"/>
+            Command="{Binding DetectOperation}"
+            CommandParameter="+/-"/>
     
     <Button x:Name="buttonZero"
             Content="0"
@@ -269,7 +278,8 @@
             Classes="button"
             Grid.Row="5"
             Grid.Column="3"
-            Command="{Binding AddPoint}"
+            Command="{Binding DetectOperation}"
+            CommandParameter=","
             />
     
     <Button x:Name="buttonEqual"
